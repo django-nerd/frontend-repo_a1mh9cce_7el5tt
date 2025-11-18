@@ -1,87 +1,71 @@
-import Spline from '@splinetool/react-spline'
-
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Spline cover background */}
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/atN3lqky4IzF-KEP/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      {/* Background: clean dark gradient with subtle grid, no characters */}
+      <div className="absolute inset-0 bg-[#0b0b0b]">
+        <div
+          className="absolute inset-0"
+          aria-hidden
+          style={{
+            background:
+              "radial-gradient(60rem 60rem at 20% -10%, rgba(56,189,248,0.15), transparent 60%), radial-gradient(50rem 50rem at 80% 110%, rgba(244,63,94,0.12), transparent 60%), radial-gradient(40rem 40rem at -10% 80%, rgba(99,102,241,0.12), transparent 60%)",
+          }}
+        />
+        {/* Subtle grid pattern */}
+        <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+              <path d="M 32 0 L 0 0 0 32" fill="none" stroke="white" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+        {/* Vignette for focus */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
       </div>
 
-      {/* Dark overlay to match theme and ensure readability */}
-      <div className="absolute inset-0 bg-[#1a1a1a]/70 pointer-events-none" />
-
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Text */}
-          <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
-              A unique experience to play <span className="text-sky-400">pokédle</span>
-            </h1>
-            <p className="mt-6 text-lg text-gray-300 max-w-xl">
-              Discover a minimalist and modern way to enjoy the guessing game you love. Clean design, smooth interactions, and a playful vibe crafted for dark mode.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a href="#invite" className="inline-flex items-center justify-center rounded-md bg-sky-500 hover:bg-sky-600 text-white px-5 py-3 font-medium transition-colors shadow-lg shadow-sky-500/20">
-                Invite pokédle
-              </a>
-              <a href="#discord" className="inline-flex items-center justify-center rounded-md bg-white/5 hover:bg-white/10 text-white px-5 py-3 font-medium transition-colors ring-1 ring-white/10">
-                Join Discord
-              </a>
-            </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl py-28 sm:py-32 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
+            <span className="inline-block h-2 w-2 rounded-full bg-sky-400" />
+            Live on Discord
+          </span>
+          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
+            A minimal way to play <span className="text-sky-400">pokédle</span>
+          </h1>
+          <p className="mt-6 text-lg text-gray-300">
+            Clean, fast, and distraction‑free. Invite the bot, guess the Pokémon, climb the leaderboard — all in dark mode.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="#invite"
+              className="inline-flex items-center justify-center rounded-md bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 font-medium transition-colors shadow-lg shadow-sky-500/20"
+            >
+              Invite Pokédle
+            </a>
+            <a
+              href="#discord"
+              className="inline-flex items-center justify-center rounded-md bg-white/5 hover:bg-white/10 text-white px-6 py-3 font-medium transition-colors ring-1 ring-white/10"
+            >
+              Join Discord
+            </a>
           </div>
 
-          {/* Right: Illustration card */}
-          <div className="relative">
-            <div className="relative mx-auto max-w-lg">
-              <div className="rounded-3xl bg-gradient-to-b from-[#121212] to-[#0d0d0d] ring-1 ring-white/10 p-6 shadow-2xl">
-                {/* Cartoon-style illustration */}
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-sky-900/40 via-sky-800/30 to-rose-900/30 flex items-center justify-center">
-                  <svg viewBox="0 0 320 240" className="w-full h-full">
-                    {/* Soft background blobs */}
-                    <defs>
-                      <radialGradient id="g1" cx="50%" cy="40%" r="60%">
-                        <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.5" />
-                        <stop offset="100%" stopColor="#111827" stopOpacity="0" />
-                      </radialGradient>
-                      <radialGradient id="g2" cx="70%" cy="70%" r="60%">
-                        <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.5" />
-                        <stop offset="100%" stopColor="#111827" stopOpacity="0" />
-                      </radialGradient>
-                    </defs>
-                    <rect width="320" height="240" fill="#0f172a" />
-                    <rect width="320" height="240" fill="url(#g1)" />
-                    <rect width="320" height="240" fill="url(#g2)" />
-
-                    {/* Character body: round, blue & beige */}
-                    <g transform="translate(160,135)">
-                      {/* Shadow */}
-                      <ellipse cx="0" cy="60" rx="70" ry="12" fill="#000" opacity="0.25" />
-                      {/* Body */}
-                      <circle cx="0" cy="0" r="70" fill="#60a5fa" />
-                      {/* Belly */}
-                      <ellipse cx="0" cy="20" rx="48" ry="42" fill="#fde68a" />
-                      {/* Eyes */}
-                      <circle cx="-20" cy="-10" r="8" fill="#0b0f19" />
-                      <circle cx="20" cy="-10" r="8" fill="#0b0f19" />
-                      <circle cx="-23" cy="-13" r="2.5" fill="#fff" />
-                      <circle cx="17" cy="-13" r="2.5" fill="#fff" />
-                      {/* Arms */}
-                      <ellipse cx="-55" cy="20" rx="18" ry="12" fill="#60a5fa" />
-                      <ellipse cx="55" cy="20" rx="18" ry="12" fill="#60a5fa" />
-                      {/* Feet */}
-                      <ellipse cx="-25" cy="70" rx="16" ry="10" fill="#334155" />
-                      <ellipse cx="25" cy="70" rx="16" ry="10" fill="#334155" />
-                    </g>
-
-                    {/* Big red question mark held by the character */}
-                    <g transform="translate(160,90)">
-                      <path d="M0 -55c-22 0-40 14-40 34 0 8 6 14 14 14s14-6 14-14c0-5 5-10 12-10 8 0 12 4 12 10 0 16-22 16-22 40v6h24v-4c0-18 22-20 22-42 0-24-18-38-36-38z" fill="#ef4444" stroke="#b91c1c" strokeWidth="4" strokeLinejoin="round" />
-                      <circle cx="4" cy="70" r="10" fill="#ef4444" stroke="#b91c1c" strokeWidth="4" />
-                    </g>
-                  </svg>
-                </div>
-              </div>
+          {/* Trusted stats-like row (inspired by minimal hero styles) */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-white/60">
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              Online 24/7
+            </div>
+            <div className="hidden sm:block h-3 w-px bg-white/10" />
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+              Zero clutter UI
+            </div>
+            <div className="hidden sm:block h-3 w-px bg-white/10" />
+            <div className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
+              Fast responses
             </div>
           </div>
         </div>
