@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -43,12 +45,12 @@ function Hero() {
             >
               Invite Pokédle
             </a>
-            <a
-              href="#discord"
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center rounded-md bg-white/5 hover:bg-white/10 text-white px-6 py-3 font-medium transition-colors ring-1 ring-white/10"
             >
               Join Discord
-            </a>
+            </Link>
           </div>
 
           {/* Trusted stats-like row (inspired by minimal hero styles) */}
